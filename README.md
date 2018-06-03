@@ -71,9 +71,16 @@ clear();
 ### index:
 
 ```js
-import { index } from 'idb-keyval';
+// as there is no way to add an index to the store with idb-keyval, you'll need to use idb for that purpose.
+const dbPromise = idb.open('keyval-store', 1, upgradedDB => {
+    upgradedDB.createObjectStore('keyval');
+    const store = upgradedDB.transaction.objectStore('keyval');
+    store.createIndex('indexName', 'indexValue', { unique: false });
+});
 
-index(indexName, indexValue);
+idbKeyval.indexes1('indexName', 'indexValue').then(val =>
+    console.log(val)
+);
 ```
 
 ### Custom stores:
