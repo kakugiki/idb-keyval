@@ -78,7 +78,7 @@ const dbPromise = idb.open('keyval-store', 1, upgradedDB => {
     store.createIndex('indexName', 'indexValue', { unique: false });
 });
 
-idbKeyval.indexes1('indexName', 'indexValue').then(val =>
+idbKeyval.index('indexName', 'indexValue').then(val =>
     console.log(val)
 );
 ```
