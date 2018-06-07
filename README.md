@@ -18,6 +18,10 @@ import { set } from 'idb-keyval';
 
 set('hello', 'world');
 set('foo', 'bar');
+  
+for (var i = 0; i < response.length; i++) {
+  idbKeyval.set(response[i].CaseId, response[i]);
+}
 ```
 
 Since this is IDB-backed, you can store anything structured-clonable (numbers, arrays, objects, dates, blobs etc).
@@ -29,11 +33,7 @@ import { set } from 'idb-keyval';
 
 set('hello', 'world')
   .then(() => console.log('It worked!'))
-  .catch(err => console.log('It failed!', err));
-  
-for (var i = 0; i < response.length; i++) {
-  idbKeyval.set(response[i].CaseId, response[i]);
-}  
+  .catch(err => console.log('It failed!', err));  
 ```
 
 ### get:
