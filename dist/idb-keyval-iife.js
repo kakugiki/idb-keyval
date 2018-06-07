@@ -64,15 +64,10 @@ function keys(store = getDefaultStore()) {
     }).then(() => keys);
 }
 function index(indexName, indexValue, store = getDefaultStore()) {
-    const indexes = [];
+    var indexes = [];
     return store._withIDBStore('readonly', store => {
-        var index = store.index(indexName);
-        index.openCursor(indexValue).onsuccess = function () {
-            if (!this.result) return;
-            indexes.push(this.result.value);
-            this.result.continue();
-        };
-    }).then(() => indexes);
+        indexes = store.index(indexName).getAll(indexValue);
+    }).then(() => indexes.result);
 }    
 
 exports.Store = Store;
