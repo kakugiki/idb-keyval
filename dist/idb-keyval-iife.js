@@ -1,8 +1,9 @@
 var idbKeyval = (function (exports) {
 'use strict';
 
+// name the db and store after JsStore's db and store name
 class Store {
-    constructor(dbName = 'keyval-store', storeName = 'keyval') {
+    constructor(dbName = 'JsStore_Referral', storeName = 'ReferralCases') {
         this.storeName = storeName;
         this._dbp = new Promise((resolve, reject) => {
             const openreq = indexedDB.open(dbName, 1);
