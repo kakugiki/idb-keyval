@@ -78,6 +78,7 @@ clear();
 
 ```js
 // use idbKeyval in conjunction with JsStore
+// works in Chrome, but Edge
 idbKeyval.index('indexName', 'indexValue').then(val =>
     console.log(val)
 );
